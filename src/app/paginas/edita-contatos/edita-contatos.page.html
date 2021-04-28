@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>edita-contatos</ion-title>
+      <ion-buttons slot="start"><ion-button routerLink="/contatos"> Contatos </ion-button></ion-buttons>
+    <ion-title>Edita-Contatos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-input type="text" placeholder="Nome:"  [(ngModel)]="nome">    </ion-input>
+    <ion-input type="text" placeholder="Email:"  [(ngModel)]="email">    </ion-input>
+    <ion-input type="text" placeholder="Telefone:"  [(ngModel)]="telefone">    </ion-input>
+    
+      <ion-button routerLink="/inicio"> OK </ion-button>
+    
 </ion-content>

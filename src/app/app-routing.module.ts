@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'tarefas',
     loadChildren: () => import('./paginas/tarefas/tarefas.module').then( m => m.TarefasPageModule)
   },
+  {
+    path: 'edita-tarefas',
+    loadChildren: () => import('./paginas/edita-tarefas/edita-tarefas.module').then( m => m.EditaTarefasPageModule)
+  },
 ];
 
 @NgModule({
