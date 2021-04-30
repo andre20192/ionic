@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditaContatosPage implements OnInit {
 
+  nome: string;
+  email: string;
+  telefone: number;
+
   constructor() { }
 
   ngOnInit() {
