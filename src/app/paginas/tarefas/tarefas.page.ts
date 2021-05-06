@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TarefaService } from '../../servicos/tarefa.service';
+import {AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tarefas',
@@ -9,7 +10,7 @@ import { TarefaService } from '../../servicos/tarefa.service';
 export class TarefasPage implements OnInit {
   tarefas: any;
 
-  constructor(private servico: TarefaService) { }
+  constructor(private servico: TarefaService, private alerta: AlertController, private nav: NavController) { }
 
   ngOnInit() {
     console.log ( this.servico.listar ());
@@ -27,7 +28,45 @@ export class TarefasPage implements OnInit {
     });
 
 
+  }
 
+  async excluir(objeto) {
+    
+    const mensagem = await this.alerta.create({
+      header: 'Atenção',
+      message: 'Deseja realmente excluir ?',
+      buttons: [
+        {
+          text: 'Sim',
+          handler:() => {
+            this.servico.excluir(objeto);
+          }
+        },
+
+        {
+          text: 'Não'
+
+        }
+
+      ]
+
+    });
+
+    await mensagem.present();
+    //this.servico.excluir(objeto);
+    
+  }
+
+  iniciarAlteracao(objeto){
+    this.nav.navigateForward([ 'edita-tarefas',
+    {
+      idtarefa: objeto.id,
+      nomeTarefa: objeto.nome,
+      descTarefa: objeto.descricao
+
+    }
+  
+  ])
 
 
 
